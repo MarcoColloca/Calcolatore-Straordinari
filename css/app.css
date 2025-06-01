@@ -14,9 +14,8 @@ ul, ol, menu{
     list-style: none;
 }
 
-input[type="date"],
-input[type="time"] {
-  color-scheme: light; /* oppure try light */
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
 
 /* Layout */
@@ -153,6 +152,9 @@ main{
   gap: 15px;
   align-items: center;
   justify-content: center;
+}
+.new-date select {
+appearance: none;
 }
 
 .new-date input,

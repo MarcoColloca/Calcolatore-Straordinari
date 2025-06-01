@@ -1,20 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Calcolatore Straordinari</title>
-    <link rel="icon" type="image/svg+xml" href="./img/clock.png" />
+
+    <!-- 🟢 Icona -->
+    <link rel="icon" type="image/png" href="./img/clock.png">
+
+    <!-- 🟢 PWA manifest + theme -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff7f50">
+
+    <!-- 🟢 CSS -->
     <link rel="stylesheet" href="./css/app.css">
+
+    <!-- 🟢 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 </head>
 
-
-
 <body>
     <div id="app">
+        <!-- tutto il tuo contenuto rimane invariato -->
         <header class="main-header">
             <nav>
                 <div class="title">
@@ -23,20 +32,14 @@
             </nav>
         </header>
 
-
-
         <main>
             <div class="container">
                 <div class="row section">
-                    <!-- Input inseirmento Giorni -->
+                    <!-- Input inserimento Giorni -->
                     <div class="new-date">
-                        <!-- Pulsante Cambio da Standard ad Extra -->
                         <div @click="tipoInsert === 'Standard' ? tipoInsert = 'Extra' : tipoInsert = 'Standard'" 
-                            class="change-type-btn"
-                        >
-                            <p>
-                               {{ tipoInsert }}
-                            </p>
+                            class="change-type-btn">
+                            <p>{{ tipoInsert }}</p>
                         </div>
                         <h3 class="text-coral text-center">
                             {{
@@ -44,8 +47,8 @@
                                 'Inserisci gli orari relativi ad una Finestra di Servizio:' :
                                 'Inserisci le Ore Extra Lavorate'
                             }}
-                            
                         </h3>
+
                         <div class="flex pt-10p">
                             <div class="label-insert">
                                 <label for="nuova-data">Data</label>
@@ -53,8 +56,8 @@
                             </div>
                             <div class="label-insert">
                                 <label for="nuova-data-turno">Turno</label>
-                                <select name="nuova-data-turno" id="nuova-data-turno"v-model="giornata.turno">
-                                    <option value="">--- Seleziona il Turno ---</option>
+                                <select name="nuova-data-turno" id="nuova-data-turno" v-model="giornata.turno">
+                                    <option value="" disabled selected hidden>--- Seleziona il Turno ---</option>
                                     <option value="Mattino">Mattino</option>
                                     <option value="Pomeriggio">Pomeriggio</option>
                                 </select>
@@ -73,12 +76,10 @@
                         </div>
                     </div>
 
-                    <!-- Box Totale Ore -->
                     <div class="totale-box">
                         <p><strong>Totale Straordinari:</strong> {{ totaleStraordinari }}</p>
                     </div>
 
-                    <!-- Tabella Ore Inserite -->
                     <table>
                         <thead>
                             <tr>
@@ -107,7 +108,6 @@
                 </div>
             </div>
 
-            <!-- Alert Errori -->
             <div v-if="showAlert" class="overlay-alert">
                 <div class="alert-box">
                     <p>{{ alertMessage }}</p>
@@ -117,8 +117,17 @@
         </main>
     </div>
 
-
+    <!-- 🟢 App logic -->
     <script type="text/javascript" src="./js/app.js"></script>
+
+    <!-- 🟢 PWA service worker registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js')
+                .then(() => console.log("✅ Service worker registrato"))
+                .catch(err => console.error("❌ Service worker errore:", err));
+        }
+    </script>
 </body>
 
 </html>
