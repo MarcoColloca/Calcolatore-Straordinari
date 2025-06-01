@@ -121,13 +121,15 @@
     <script type="text/javascript" src="./js/app.js"></script>
 
     <!-- 🟢 PWA service worker registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('sw.js')
+    <!-- 
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('sw.js')
                 .then(() => console.log("✅ Service worker registrato"))
                 .catch(err => console.error("❌ Service worker errore:", err));
-        }
-    </script>
-</body>
+            }
+        </script>
+    -->
+    </body>
 
 </html>
