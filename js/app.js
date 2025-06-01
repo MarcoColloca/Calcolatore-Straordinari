@@ -15,13 +15,7 @@ createApp({
                 straordinari: 0
             },
             tipoInsert: 'Standard',
-            giorniInseriti: [{
-                data: '22/10/2025',
-                turno: 'Mattino',
-                dalle: '16:30',
-                alle: '9:40',
-                straordinari: 65
-            }],
+            giorniInseriti: [],
             showAlert: false,
             alertMessage: ''
         }
