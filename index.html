@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Straordinari</title>
+    <link rel="icon" type="image/svg+xml" href="./img/clock.png" />
+    <link rel="stylesheet" href="./css/app.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+</head>
+
+
+
+<body>
+    <div id="app">
+        <header class="main-header">
+            <nav>
+                <div class="title">
+                    {{ title }}
+                </div>
+            </nav>
+        </header>
+
+
+
+        <main>
+            <div class="container">
+                <div class="row section">
+                    <!-- Input inseirmento Giorni -->
+                    <div class="new-date">
+                        <!-- Pulsante Cambio da Standard ad Extra -->
+                        <div @click="tipoInsert === 'Standard' ? tipoInsert = 'Extra' : tipoInsert = 'Standard'" 
+                            class="change-type-btn"
+                        >
+                            <p>
+                               {{ tipoInsert }}
+                            </p>
+                        </div>
+                        <h3 class="text-coral text-center">
+                            {{
+                                tipoInsert === 'Standard' ? 
+                                'Inserisci gli orari relativi ad una Finestra di Servizio:' :
+                                'Inserisci le Ore Extra Lavorate'
+                            }}
+                            
+                        </h3>
+                        <div class="flex pt-10p">
+                            <div class="label-insert">
+                                <label for="nuova-data">Data</label>
+                                <input type="date" name="nuova-data" id="nuova-data" v-model="giornata.data">
+                            </div>
+                            <div class="label-insert">
+                                <label for="nuova-data-turno">Turno</label>
+                                <select name="nuova-data-turno" id="nuova-data-turno"v-model="giornata.turno">
+                                    <option value="">--- Seleziona il Turno ---</option>
+                                    <option value="Mattino">Mattino</option>
+                                    <option value="Pomeriggio">Pomeriggio</option>
+                                </select>
+                            </div>
+                            <div class="label-insert">
+                                <label for="nuova-data-dalle">Dalle Ore:</label>
+                                <input type="time" name="nuova-data-dalle" id="nuova-data-dalle" v-model="giornata.dalle">
+                            </div>
+                            <div class="label-insert">
+                                <label for="nuova-data-alle">Alle Ore:</label>
+                                <input type="time" name="nuova-data-alle" id="nuova-data-alle" v-model="giornata.alle">
+                            </div>
+                        </div>
+                        <div class="flex j-c-center mt-10p">
+                            <button @click="inserisciData()">Inseisci</button>
+                        </div>
+                    </div>
+
+                    <!-- Box Totale Ore -->
+                    <div class="totale-box">
+                        <p><strong>Totale Straordinari:</strong> {{ totaleStraordinari }}</p>
+                    </div>
+
+                    <!-- Tabella Ore Inserite -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Turno</th>
+                                <th>Dalle Ore</th>
+                                <th>Alle Ore</th>
+                                <th>Straordinari</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(giorno, i) in giorniInseriti" :key="i">
+                                <td>{{giorno.data}}</td>
+                                <td>{{giorno.turno}}</td>
+                                <td>{{giorno.dalle}}</td>
+                                <td>{{giorno.alle}}</td>
+                                <td>
+                                    {{daMinutiAOre(giorno.straordinari)}}
+                                    <span class="delete-link" @click="eliminaGiornata(i)">
+                                        Elimina
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Alert Errori -->
+            <div v-if="showAlert" class="overlay-alert">
+                <div class="alert-box">
+                    <p>{{ alertMessage }}</p>
+                    <button @click="closeAlert">Chiudi</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <script type="text/javascript" src="./js/app.js"></script>
+</body>
+
+</html>

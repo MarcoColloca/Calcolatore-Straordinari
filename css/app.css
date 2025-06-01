@@ -1,0 +1,317 @@
+body{
+  background-color: rgb(37, 37, 37);
+}
+
+/* Reset */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, ol, menu{
+    list-style: none;
+}
+
+input[type="date"],
+input[type="time"] {
+  color-scheme: light; /* oppure try light */
+}
+
+/* Layout */
+
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+.col-6{
+  width: calc(100%/12*6);
+}
+.col-2{
+  width: calc(100%/12*2);
+}
+.col-10{
+  width: calc(100%/12*10);
+}
+
+
+
+/* Utility */
+
+.flex {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+
+.j-c-center{
+  justify-content: center;
+}
+
+.text-coral{
+  color: coral;
+}
+.text-center{
+  text-align: center;
+}
+
+.no-margin{
+  margin: 0;
+}
+
+.mt-10p {
+  margin-top: 10px;
+}
+.pt-10p {
+  padding-top: 10px;
+}
+
+/* Style*/
+
+li{
+  font-size: 24px;
+}
+
+
+/* Header */
+
+.main-header{
+  padding: 24px;
+  background-color: coral;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 127, 80, 0.4);
+}
+
+.title{
+  font-size: 48px;
+  font-weight: bold;
+}
+
+
+/* Main */
+
+main{
+  position: relative;
+  overflow: hidden;
+}
+
+.section {
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+  margin-top: 100px;
+  width: 100%;
+}
+
+
+/* Insert Section */
+
+.label-insert {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+}
+
+.label-insert label {
+  padding-left: 5px;
+}
+
+.label-insert input {
+  padding: 0 20px;
+}
+
+.new-date {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.new-date h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.new-date .flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-date input,
+.new-date select {
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  outline: none;
+}
+
+.new-date input:focus,
+.new-date select:focus {
+  border-color: coral;
+  box-shadow: 0 0 5px coral;
+}
+
+.new-date button {
+  background-color: rgb(0, 141, 54);
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.new-date button:hover {
+  background-color: rgb(0, 100, 38);
+}
+
+
+.change-type-btn {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  padding: 10px 15px;
+  border: 1px solid coral;
+  border-radius: 2px;
+}
+
+.change-type-btn:hover {
+  color: white;
+  background-color: coral;
+  cursor: pointer;
+}
+
+/* Tabella Straordinari */
+
+.section table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: white;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section thead {
+    background-color: #444;
+}
+
+.section th,
+.section td {
+    position: relative;
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #555;
+}
+
+.section tbody tr:hover {
+    background-color: #3a3a3a;
+}
+
+.section th {
+    font-weight: bold;
+}
+
+.delete-link {
+    color: crimson;
+    position: absolute;
+    right: 15px;
+}
+
+.delete-link:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+
+/* Totale Ore */
+.totale-box {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 8px;
+  margin: 30px 0 10px;
+  font-size: 18px;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+.totale-box strong {
+  color: coral;
+}
+
+
+/* Alert */
+
+.overlay-alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* sfondo semi-trasparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.alert-box {
+  background-color: #2b2b2b;
+  color: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+  width: 80%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+.alert-box p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.alert-box button {
+  padding: 10px 20px;
+  background-color: coral;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.alert-box button:hover {
+  background-color: royalblue;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
