@@ -35,7 +35,10 @@ createApp({
             return `${ore} ore e ${minuti} minuti.`
         }
     },
-
+    
+    mounted() {
+        this.recuperaStraordinari();
+    },
 
     methods: {
         
@@ -135,6 +138,7 @@ createApp({
 
                 this.giorniInseriti.push(JSON.parse(JSON.stringify(this.giornata)));
                 this.resetGiornata();
+                this.salvaStraordinari();
             }
 
         },
@@ -159,6 +163,19 @@ createApp({
         closeAlert() {
             this.showAlert = false;
             this.alertMessage = ''
+        },
+        salvaStraordinari() {
+            const straordinari = JSON.stringify(this.giorniInseriti)
+            localStorage.setItem('straordinari', straordinari)
+        },
+        recuperaStraordinari() {
+            const straordinari = localStorage.getItem('straordinari')
+            console.log(straordinari)
+            if(straordinari) {
+                this.giorniInseriti = JSON.parse(straordinari)
+            } else {
+                this.giorniInseriti = []
+            }
         }
     }
 }).mount('#app')
