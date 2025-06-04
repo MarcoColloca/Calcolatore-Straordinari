@@ -153,6 +153,7 @@ createApp({
 
         eliminaGiornata(index) {
             this.giorniInseriti.splice(index, 1);
+            this.salvaStraordinari();
         },
 
         openAlert(msg) {
